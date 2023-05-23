@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My shopping</title>
+  <!-- <documentation at http://demos.jquerymobile.com/1.4.1/ > -->
+
+  <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+
+
+  <link rel="stylesheet" href="stylesheets/themes/default.css" />
+  
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+  <script src="javascripts/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+
+</head>
+
+<body>
+
+  <!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="home">
+
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+        <div class = "header">
+            <h1>Share Your Favorite Items</h1>
+            <div class = "header_items">
+              <img class = "header_img" src="images/header.jpg" alt="header">
+              <!-- <p>Discover Unique, Handcrafted Items from Local Artist </p> -->
+            </div>
+        </div>
+      <div data-role="navbar" data-theme='a'>
+        <ul>
+            <!-- /navbar -->
+            <!-- <li><a href="#home">Home Page</a></li> -->
+            <li><a href="#AllItems" data-transition="slide">Review All Items</a></li>
+            <li><a href="#AddItems" data-transition="slide">Sell Your Items</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--   page content -->
+    <div data-role="content" data-theme='a'>
+      
+    </div>
+
+    <div id = "first_menu">
+      <button>
+        <a href="#AllItems" data-transition="slide">
+          <img src="images/buy.png" alt="Buy">
+        </a>
+      </button>
+      <button>
+        <a href="#AddItems" data-transition="slide">
+          <img src="images/sell.png" alt="Sell">
+        </a>
+      </button>
+    </div>
+
+    
+
+    <!--  page footer -->
+    <div data-role="footer" data-theme='b' class = 'footer'>
+        <p>This website was created for educational purposes only by a group of people from
+            <a href="https://www.bellevuecollege.edu">Bellevue College</a></p>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+
+
+<!-- Start of  page ------------------------------------------------------------------>
+<div data-role="page" id="AllItems">
+  <!--   page header -->
+  <div data-role="header" data-theme='a'>
+      <div class = "header">
+        <h1>Share Your Favorite Items</h1>
+      </div>
+      <div data-role="navbar" data-theme='a'>
+        <ul>
+            <!-- /navbar -->
+            <li><a href="#home" data-transition="slide">Home Page</a></li>
+            <!-- <li><a href="#AllItems" data-transition="slide">All Items</a></li> -->
+            <li><a href="#AddItems" data-transition="slide">Add Items</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  <!--   page content -->
+  <div data-role="content" data-theme='a'>
+      <p> Here are All items</p>
+      <div id="divItemList">
+          <ul id="myul"></ul>
+      </div>
+      <input type="button" value="Sort By Cost" id="buttonSortCost" data-inline="true" />
+      <!-- <input type="button" value="Sort By Listed Day" id="buttonSortListedDay" data-inline="true" /> -->
+      <input type="button" value="Sort By Type" id="buttonSortType" data-inline="true" />
+  </div>
+
+
+  <!--  page footer -->
+  <div data-role="footer" data-theme='b' class = 'footer'>
+      <p><i>This website was created for educational purposes only by a group of people from
+          <a href="https://www.bellevuecollege.edu">Bellevue College</a></i></p>
+  </div>
+</div>
+<!-- End of  page ------------------------------------------------------------------>
+
+
+
+ <!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="AddItems">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+        <div class = "header">
+          <h1>Share Your Favorite Items</h1>
+        </div>
+        <div data-role="navbar" data-theme='a'>
+          <ul>
+              <!-- /navbar -->
+            <li><a href="#home" data-transition="slide">Home Page</a></li>
+            <li><a href="#AllItems" data-transition="slide">All Items</a></li>
+            <!-- <li><a href="#AddItems" data-transition="slide">Add Items</a></li> -->
+          </ul>
+        </div>
+    </div>
+
+    <!-- page content -->
+  
+    <div data-role="content" data-theme='a'>
+    
+    <h2>Add New Items</h2>
+    <br/>
+
+    Enter Items Name<br />
+    <input type="text" value="" id="title"/>
+
+    Image Picture<br />
+    <input type="file" value="" id="picture"/>
+
+    <div class="select-type">
+      <label for="select-type">Select Type</label>
+      <select name="select-type" id="select-type">
+          <option value="">--Select--</option>
+      </select>
+    </div>
+
+    Cost<br />
+    <input type="text" value="" id="cost"/>
+
+    Description<br />
+    <input type="text" value="" id="description"/>
+
+
+    URL<br />
+    <input type="text" value="" id="URL"/>
+    
+      <input type="button" value="Add Item" id="buttonAdd" data-inline="true" />
+      <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+    </div>
+
+
+    
+ 
+    <!--  page footer -->
+    <div data-role="footer" data-theme='b' class = 'footer'>
+        <p>This website was created for educational purposes only by a group of people from
+            <a href="https://www.bellevuecollege.edu">Bellevue College</a></p>
+    </div>
+</div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+
+
+
+
+
+<!-- Start of  page ------------------------------------------------------------------>
+<div data-role="page" id="details">
+  
+      <!--   page header -->
+      <div data-role="header" data-theme='a'>
+        <div class = "header">
+          <h1>Share Your Favorite Items</h1>
+        </div>
+        <div data-role="navbar" data-theme='b'>
+          <ul>
+              <!-- /navbar -->
+            <li><a href="#home" data-transition="slide">Home Page</a></li>
+            <li><a href="#AllItems" data-transition="slide">All Items</a></li>
+            <li><a href="#AddItems" data-transition="slide">Add Items</a></li>
+          </ul>
+        </div>
+      </div>
+
+    <!--  content -->
+    <div data-role="content" data-theme='a'>
+        <!-- <p> Here are the details</p> -->
+        <p id="onePicture"></p>
+        <p id="oneTitle"></p>
+        <p id="onePicture"></p>
+        <p id="oneType"></p>
+        <p id="oneCost"></p>
+        <p id="oneDescription"></p>
+        <p id="oneURL" hidden></p>
+        <input type="button" value="Buy This Item!" id="buy" />
+
+        <button>
+          <a href="#AllItems">Go Back</a>
+        </button>
+        <input type="button" value="Edit Item" id="buttonEdit" data-inline="true" />
+        <input type="button" value="Delete Item" id="buttonDelete" data-inline="true" />
+
+
+
+        <!-- <input type="button" value="Edit Note" id="buttonEdit" data-inline="true" /> -->
+    </div>
+
+    <!--  page footer -->
+    <div data-role="footer" data-theme='b' class = 'footer'>
+        <p>This website was created for educational purposes only by a group of people from
+            <a href="https://www.bellevuecollege.edu" >Bellevue College</a></p>
+    </div>
+</div>
+
+</body>
+
+</html>

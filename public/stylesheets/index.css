@@ -1,0 +1,36 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.header_items {
+  position: relative;
+  }
+
+.header_items p {
+  position: absolute;
+  color: white;
+  top: 70%;
+  left: 50%;
+  }
+  #first_menu {
+    display: flex; 
+  }
+  
+
+h1{
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+img{
+  width: 50%;
+}
+
+.header_img
+{
+  width: 100%;
+  height: 20%;
+}
