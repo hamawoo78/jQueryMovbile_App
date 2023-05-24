@@ -1,5 +1,38 @@
 var express = require('express');
 var router = express.Router();
+var fs = require("fs");
+
+let severItemArray = [];
+
+let fileManager = {
+  read: function() {
+    if (fileManager.validData())
+    {
+      var rawdata = fs.readFileSync('objectdata.json');
+      let goodData = JSON.parse(rawdata);
+      severItemArray = goodData;
+    }
+  },
+
+  write: function() {
+    let data = JSON.stringify(severItemArray);
+    fs.writeFileSync('objectdata.json', data);
+  },
+
+  validData: function() {
+    var rawdata = fs.readFileSync('objectdata.json');
+    console.log(rawdata.length);
+    if(rawdata.length < 1) 
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+};
+
 
 let ItemObject = function (pTitle,pPicture, pType, pCost, pDescription, pURL) {
   this.ID = Math.random().toString(16).slice(5);
@@ -11,7 +44,7 @@ let ItemObject = function (pTitle,pPicture, pType, pCost, pDescription, pURL) {
   this.URL = pURL;
 }
 
-let severItemArray = [];
+
 
 /*
 severItemArray.push(new ItemObject("Handmade plate", "<img src='public/image/handmadeplate.jpg' alt='plate'>", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
@@ -19,17 +52,23 @@ severItemArray.push(new ItemObject("Chick handmade crochet", "<img src='public/i
 severItemArray.push(new ItemObject("Ferrari", "<img src='public/image/ferrari.jpg' alt='ferrari'>", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
 */
 
-severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
-
-
+if(!fileManager.validData()) 
+{
+  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+  fileManager.write();
+}
+else
+{
+  fileManager.read(); // do have prior movies so load up the array
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,14 +77,16 @@ router.get('/', function(req, res, next) {
 
 /* GET all item data. */
 router.get('/getAllItems', function(req, res) {
+  fileManager.read();
   res.status(200).json(severItemArray);
 });
 
 /* Add one new item */
 router.post('/AddItems', function(req, res) {
-  console.log("add item server");
+  // console.log("add item server");
   const newItem = req.body;
   severItemArray.push(newItem);
+  fileManager.write();
   res.status(200).json(newItem);
 });
 
@@ -66,11 +107,13 @@ router.delete('/DeleteItem/:ID', (req, res) =>{
   else
   {
     severItemArray.splice(pointer, 1)
+    fileManager.write();
     res.send('Item with ID: ' + delID+ 'delted!')
   }
-  newItem = req.body;
-  severItemArray.push(newItem);
-  res.status(200).json(newItem);
+  // newItem = req.body;
+  // severItemArray.push(newItem);
+  // res.status(200).json(newItem);
+  // Do we need this three line?
 });
 
 function GetArrayPointer(localID){
