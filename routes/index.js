@@ -54,15 +54,13 @@ severItemArray.push(new ItemObject("Ferrari", "<img src='public/image/ferrari.jp
 
 if(!fileManager.validData()) 
 {
-  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Handmade plate", "", "Kitchen", "6", "cute plate", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Chick handmade crochet", "", "Hobby", "2", "hand made cute item", "https://www.bellevuecollege.edu/"));
-  severItemArray.push(new ItemObject("Ferrari", "", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Handmade plate", "https://i.etsystatic.com/8444652/r/il/e49b53/3246849328/il_1588xN.3246849328_po5a.jpg", "Kitchen", "41.50", "cute plate", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Chick handmade crochet", "https://i.etsystatic.com/26183420/r/il/124e0b/4855541333/il_1588xN.4855541333_k3r7.jpg", "Hobby", "20", "hand made cute item", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Ferrari", "https://hips.hearstapps.com/hmg-prod/images/2020-ferrari-f8-spyder-101-1593551664.jpg?crop=0.884xw:0.748xh;0.00326xw,0.152xh&resize=1200:*", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Handmade plate", "https://i.etsystatic.com/8444652/r/il/e49b53/3246849328/il_1588xN.3246849328_po5a.jpg", "Kitchen", "41.50", "cute plate", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Chick handmade crochet", "https://i.etsystatic.com/26183420/r/il/124e0b/4855541333/il_1588xN.4855541333_k3r7.jpg", "Hobby", "20", "hand made cute item", "https://www.bellevuecollege.edu/"));
+  severItemArray.push(new ItemObject("Ferrari", "https://hips.hearstapps.com/hmg-prod/images/2020-ferrari-f8-spyder-101-1593551664.jpg?crop=0.884xw:0.748xh;0.00326xw,0.152xh&resize=1200:*", "Other", "250000", "ferrari", "https://www.bellevuecollege.edu/"));
+
   fileManager.write();
 }
 else

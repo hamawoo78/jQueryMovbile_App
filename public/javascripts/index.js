@@ -11,6 +11,7 @@ let ItemObject = function (pTitle,pPicture, pType, pCost, pDescription, pURL) {
     this.URL = pURL;
 }
 
+// itemArray.push(new ItemObject("Handmade plate", "https://i.etsystatic.com/8444652/r/il/e49b53/3246849328/il_1588xN.3246849328_po5a.jpg", "Kitchen", "41.50", "cute plate", "https://www.bellevuecollege.edu/"));
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // clear button
     function clear() {
         document.getElementById("title").value = "";
+        document.getElementById("picture").value = "";
         document.getElementById("cost").value = "";
         document.getElementById("description").value = "";
         document.getElementById("URL").value = "";
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // use the html5 "data-parm" to encode the ID of this particular data object
                 // that we are building an li from
                 myLi.setAttribute("data-parm", oneItem.ID);
-                myLi.innerHTML = oneItem.Picture + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+                myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">`+ "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
                 ul.appendChild(myLi);
             });
             // itemArray.sort(dynamicSort("Type"));
@@ -133,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // use the html5 "data-parm" to encode the ID of this particular data object
                 // that we are building an li from
                 myLi.setAttribute("data-parm", oneItem.ID);
-                myLi.innerHTML = oneItem.Picture + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+                myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">` + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
                 ul.appendChild(myLi);
             });
 
@@ -203,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById("onePicture").innerHTML = item.Picture;
+    document.getElementById("onePicture").textContent = `<img src="${item.Picture}" alt="${item.Title}">`;
     document.getElementById("oneTitle").textContent = "TITLE: " + item.Title;
     document.getElementById("oneType").textContent = "TYPE: " + item.Type;
     document.getElementById("oneCost").textContent = "COST: $" + item.Cost;
@@ -229,7 +231,7 @@ function itemList() {
             // use the html5 "data-parm" to encode the ID of this particular data object
             // that we are building an li from
             myLi.setAttribute("data-parm", oneItem.ID);
-            myLi.innerHTML = oneItem.Picture + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+            myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">` + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
             ul.appendChild(myLi);
         });
     
