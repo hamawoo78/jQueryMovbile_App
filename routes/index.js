@@ -87,8 +87,8 @@ router.get('/getAllItems', function(req, res) {
       URL: item.URL
     };
     return newItem;
-  res.status(200).json(severItemArray);
   });
+    res.status(200).json(severItemArray);
 });
 
 /* Add one new item */
