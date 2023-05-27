@@ -76,7 +76,19 @@ router.get('/', function(req, res, next) {
 /* GET all item data. */
 router.get('/getAllItems', function(req, res) {
   fileManager.read();
+  const itemsWithImages = severItemArray.map(item => {
+    const newItem = {
+      ID: item.ID,
+      Title: item.Title,
+      Picture: `<img src="${item.Picture}" alt="${item.Title}">`,
+      Type: item.Type,
+      Cost: item.Cost,
+      Description: item.Description,
+      URL: item.URL
+    };
+    return newItem;
   res.status(200).json(severItemArray);
+  });
 });
 
 /* Add one new item */
