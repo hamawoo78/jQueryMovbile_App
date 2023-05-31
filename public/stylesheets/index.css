@@ -30,9 +30,11 @@ img{
   width: 100%;
   height: 20%;
 }
-li a {
+ul a{
   color: #ffffff;
   text-decoration: none;
 }
 
-
+  #buy{
+  background-color: #ffffff;
+}

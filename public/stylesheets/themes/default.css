@@ -30,20 +30,20 @@
 }
 
 .ui-bar-a a.ui-link {
-	color: #7cc4e7 /*{a-bar-link-color}*/;
+	color: #ffffff /*{a-bar-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-bar-a a.ui-link:visited {
-    color: #2489CE /*{a-bar-link-visited}*/;
+    color: #ffffff /*{a-bar-link-visited}*/;
 }
 
 .ui-bar-a a.ui-link:hover {
-	color: #2489CE /*{a-bar-link-hover}*/;
+	color: #d64c4c /*{a-bar-link-hover}*/;
 }
 
 .ui-bar-a a.ui-link:active {
-	color: #2489CE /*{a-bar-link-active}*/;
+	color: #d64c4c /*{a-bar-link-active}*/;
 }
 
 .ui-bar-a,
