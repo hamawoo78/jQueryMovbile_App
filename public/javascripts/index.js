@@ -82,8 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 // use the html5 "data-parm" to encode the ID of this particular data object
                 // that we are building an li from
                 myLi.setAttribute("data-parm", oneItem.ID);
-                myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">`+ "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+
+                var img = document.createElement('img');
+                img.src = oneItem.Picture;
+                img.alt = oneItem.Title;
+
+                myLi.innerHTML = img + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
                 ul.appendChild(myLi);
+
             });
             // itemArray.sort(dynamicSort("Type"));
             
@@ -135,7 +141,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 // use the html5 "data-parm" to encode the ID of this particular data object
                 // that we are building an li from
                 myLi.setAttribute("data-parm", oneItem.ID);
-                myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">` + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+
+                var img = document.createElement('img');
+                img.src = oneItem.Picture;
+                img.alt = oneItem.Title;
+
+                myLi.innerHTML = img + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
                 ul.appendChild(myLi);
             });
 
@@ -205,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById("onePicture").textContent = `<img src="${item.Picture}" alt="${item.Title}">`;
+    document.getElementById("onePicture").innerHTML = `<img src="${item.Picture}" alt="${item.Titile}"/>`;
     document.getElementById("oneTitle").textContent = "TITLE: " + item.Title;
     document.getElementById("oneType").textContent = "TYPE: " + item.Type;
     document.getElementById("oneCost").textContent = "COST: $" + item.Cost;
