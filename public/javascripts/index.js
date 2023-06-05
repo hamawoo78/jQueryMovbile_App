@@ -76,9 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         sortOrder = "Cost"; // Set the sort order to "name"
         itemList(sortOrder)
     });
-    
-
-});
 
 
 
@@ -95,6 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteItem(localParm);
         //document.location.href= "index.html#AllItems"
     });
+    
+
+});
+
+
 
     //document.getElementById("buttonEdit").addEventListener("click", function () {
         // do edit
@@ -137,6 +139,12 @@ function itemList(sortBy) {
    let ul =document.getElementById("myul");
    ul.innerHTML = "";
 
+
+   $.get("/getAllItems", function(data, status){ 
+    itemArray = data; // copy returned server json data into local array
+    // now INSIDE this “call back” anonymous fun
+
+
     if (sortBy === "Type") 
     {
         itemArray.sort(dynamicSort("Type")); // Sort the array by Type
@@ -148,31 +156,27 @@ function itemList(sortBy) {
             }); // Sort the array by cost
     } 
 
-   $.get("/getAllItems", function(data, status){ 
-    itemArray = data; // copy returned server json data into local array
-    // now INSIDE this “call back” anonymous fun
+    itemArray.forEach(function (oneItem,) {   // use handy array forEach method
+        var myLi = document.createElement('li');
+        // adding a class name to each one as a way of creating a collection
+        myLi.classList.add('oneItem'); 
+        // use the html5 "data-parm" to encode the ID of this particular data object
+        // that we are building an li from
+        myLi.setAttribute("data-parm", oneItem.ID);
+        myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">` + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
+        ul.appendChild(myLi);
+    });
 
-        itemArray.forEach(function (oneItem,) {   // use handy array forEach method
-            var myLi = document.createElement('li');
-            // adding a class name to each one as a way of creating a collection
-            myLi.classList.add('oneItem'); 
-            // use the html5 "data-parm" to encode the ID of this particular data object
-            // that we are building an li from
-            myLi.setAttribute("data-parm", oneItem.ID);
-            myLi.innerHTML = `<img src="${oneItem.Picture}" alt="${oneItem.Title}">` + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
-            ul.appendChild(myLi);
-        });
-    
 
-        // set up an event for each new li item, 
-        var liList = document.getElementsByClassName("oneItem");
-        let newItemArray = Array.from(liList);
-        newItemArray.forEach(function (element) {
-            element.addEventListener('click', function () {
-                // get that data-parm we added for THIS particular li as we loop thru them
-                var parm = this.getAttribute("data-parm");  // passing in the record.Id
-                // get our hidden <p> and save THIS ID value in the localStorage "dictionairy"
-                localStorage.setItem('parm', parm);
+    // set up an event for each new li item, 
+    var liList = document.getElementsByClassName("oneItem");
+    let newItemArray = Array.from(liList);
+    newItemArray.forEach(function (element) {
+        element.addEventListener('click', function () {
+            // get that data-parm we added for THIS particular li as we loop thru them
+            var parm = this.getAttribute("data-parm");  // passing in the record.Id
+            // get our hidden <p> and save THIS ID value in the localStorage "dictionairy"
+            localStorage.setItem('parm', parm);
        
        
        
