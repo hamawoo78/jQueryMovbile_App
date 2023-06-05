@@ -64,115 +64,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // add function to clear button
     document.getElementById("buttonClear").addEventListener("click", clear);
 
+    let sortOrder = "none"; // Initial sort order
+
     document.getElementById("buttonSortType").addEventListener("click", function () {
-        // clear prior data
-        let ul =document.getElementById("myul");
-        ul.innerHTML = "";
-        
-        $.get("/getAllItems", function(data, status){ 
-            itemArray = data; // copy returned server json data into local array
-            // now INSIDE this “call back” anonymous fun
-
-            itemArray.sort(dynamicSort("Type"));
-
-            itemArray.forEach(function (oneItem,) {   // use handy array forEach method
-                var myLi = document.createElement('li');
-                // adding a class name to each one as a way of creating a collection
-                myLi.classList.add('oneItem'); 
-                // use the html5 "data-parm" to encode the ID of this particular data object
-                // that we are building an li from
-                myLi.setAttribute("data-parm", oneItem.ID);
-
-                var img = document.createElement('img');
-                img.src = oneItem.Picture;
-                img.alt = oneItem.Title;
-
-                myLi.innerHTML = img + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
-                ul.appendChild(myLi);
-
-            });
-            // itemArray.sort(dynamicSort("Type"));
-            
-
-            // set up an event for each new li item, 
-            var liList = document.getElementsByClassName("oneItem");
-            let newItemArray = Array.from(liList);
-            newItemArray.forEach(function (element) {
-                element.addEventListener('click', function () {
-                    // get that data-parm we added for THIS particular li as we loop thru them
-                    var parm = this.getAttribute("data-parm");  // passing in the record.Id
-                    // get our hidden <p> and save THIS ID value in the localStorage "dictionairy"
-                    localStorage.setItem('parm', parm);
-            
-            
-            
-                    // but also, to get around a "bug" in jQuery Mobile, take a snapshot of the
-                    // current movie array and save it to localStorage as well.
-                    let stringItemArray = JSON.stringify(itemArray); // convert array to "string"
-                    localStorage.setItem('itemArray', stringItemArray);
-                
-                    
-                    // now jump to our page that will use that one item
-                    document.location.href = "index.html#AllItems";
-                    });
-                });
-            });
-
+        sortOrder = "Type"; // Set the sort order to "name"
+        itemList(sortOrder)
     });
 
     // sort by cost
     document.getElementById("buttonSortCost").addEventListener("click", function () {
-        // clear prior data
-        let ul =document.getElementById("myul");
-        ul.innerHTML = "";
-        
-        $.get("/getAllItems", function(data, status){ 
-            itemArray = data; // copy returned server json data into local array
-            // now INSIDE this “call back” anonymous fun
-
-            itemArray.sort(function(a,b){
-            return a.Cost - b.Cost;
-            });
-
-            itemArray.forEach(function (oneItem,) {   // use handy array forEach method
-                var myLi = document.createElement('li');
-                // adding a class name to each one as a way of creating a collection
-                myLi.classList.add('oneItem'); 
-                // use the html5 "data-parm" to encode the ID of this particular data object
-                // that we are building an li from
-                myLi.setAttribute("data-parm", oneItem.ID);
-
-                var img = document.createElement('img');
-                img.src = oneItem.Picture;
-                img.alt = oneItem.Title;
-
-                myLi.innerHTML = img + "<br />" + oneItem.Title  + "<br />" + "$ " +oneItem.Cost;
-                ul.appendChild(myLi);
-            });
-
-            // set up an event for each new li item, 
-            var liList = document.getElementsByClassName("oneItem");
-            let newItemArray = Array.from(liList);
-            newItemArray.forEach(function (element) {
-                element.addEventListener('click', function () {
-                    // get that data-parm we added for THIS particular li as we loop thru them
-                    var parm = this.getAttribute("data-parm");  // passing in the record.Id
-                    // get our hidden <p> and save THIS ID value in the localStorage "dictionairy"
-                    localStorage.setItem('parm', parm);
-        
-                    // but also, to get around a "bug" in jQuery Mobile, take a snapshot of the
-                    // current movie array and save it to localStorage as well.
-                    let stringItemArray = JSON.stringify(itemArray); // convert array to "string"
-                    localStorage.setItem('itemArray', stringItemArray);
-                
-                    
-                    // now jump to our page that will use that one item
-                    document.location.href = "index.html#AllItems";
-                    });
-            });
-        });
-
+        sortOrder = "Cost"; // Set the sort order to "name"
+        itemList(sortOrder)
     });
+    
+
+});
 
 
 
@@ -226,11 +132,22 @@ document.addEventListener("DOMContentLoaded", function () {
  
 // end of page before show code *************************************************************************
 
-function itemList() {
+function itemList(sortBy) {
     // clear prior data
    let ul =document.getElementById("myul");
    ul.innerHTML = "";
-   
+
+    if (sortBy === "Type") 
+    {
+        itemArray.sort(dynamicSort("Type")); // Sort the array by Type
+    } 
+    else if (sortBy === "Cost") 
+    {
+        itemArray.sort(function(a,b){
+            return a.Cost - b.Cost;
+            }); // Sort the array by cost
+    } 
+
    $.get("/getAllItems", function(data, status){ 
     itemArray = data; // copy returned server json data into local array
     // now INSIDE this “call back” anonymous fun
@@ -293,12 +210,11 @@ function deleteItem(whitch){
 
 
   
-    $(document).bind("change", "#select-type", function (event, ui) {
+$(document).bind("change", "#select-type", function (event, ui) {
         selectedType = $('#select-type').val();
     });
 
     // updateItemList(); // Update the note list on page load
-}); 
 
 $(document).ready(function() {
     // Handle file selection
