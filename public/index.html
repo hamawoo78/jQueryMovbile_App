@@ -40,6 +40,8 @@
             <!-- <li><a href="#home">Home Page</a></li> -->
             <li><a href="#AllItems" data-transition="slide">Review All Items</a></li>
             <li><a href="#AddItems" data-transition="slide">Sell Your Items</a></li>
+            <!-- <li><a href="#EditItems" data-transition="slide">Edit Your Items</a></li> -->
+
         </ul>
       </div>
 
@@ -139,44 +141,7 @@
         </div>
     </div>
 
-    <!-- page content -->
-  
-    <div data-role="content" data-theme='a'>
-    
-    <h2>Add New Items</h2>
-    <br/>
 
-    Enter Items Name<br />
-    <input type="text" value="" id="title"/>
-
-    Image Picture<br />
-    <input type="text" id="picture" placeholder="Enter image URL"/> 
-
-    <div class="select-type">
-      <label for="select-type">Select Type</label>
-      <select name="select-type" id="select-type">
-        <div class ="option">
-          <option class ="option" value="">--Select--</option>
-        </div>
-      </select>
-    </div>
-
-    Cost<br />
-    <input type="text" value="" id="cost"/>
-
-    Description<br />
-    <input type="text" value="" id="description"/>
-
-
-    URL<br />
-    <input type="text" value="" id="URL"/>
-    
-      <input type="button" value="Add Item" id="buttonAdd" data-inline="true" />
-      <input type="button" value="Clear" id="buttonClear" data-inline="true" />
-    </div>
-
-
-    
  
     <!--  page footer -->
     <div data-role="footer" data-theme='b' class = 'footer'>
@@ -226,38 +191,10 @@
         <button>
           <a href="#AllItems">Go Back</a>
         </button>
-        <input type="button" value="Edit Item" id="buttonEdit" data-inline="true" />
+        <button>
+          <a href="#EditItems?id=<ID_VALUE>">Edit Item</a>
+        </button>
         <input type="button" value="Delete Item" id="buttonDelete" data-inline="true" />
-    </div>
-
-    <div>
-      <h2>Edit Item information</h2>
-
-      Items Name<br />
-      <input type="text" value="" id="titleE"/>
-  
-      Image Picture<br />
-      <input type="text" id="pictureE" placeholder="Enter image URL"/> 
-  
-      <div class="select-type">
-        <label for="select-type">Select Type</label>
-        <select name="select-type" id="select-type">
-          <div class ="option">
-            <option class ="option" value="">--Select--</option>
-          </div>
-        </select>
-      </div>
-  
-      Cost<br />
-      <input type="text" value="" id="costE"/>
-  
-      Description<br />
-      <input type="text" value="" id="descriptionE"/>
-
-      URL<br />
-      <input type="text" value="" id="URLE"/>
-
-      <input type="button" value="Done" id="buttonModify" data-inline="true" />
     </div>
 
     <!--  page footer -->
@@ -266,6 +203,66 @@
             <a href="https://www.bellevuecollege.edu" >Bellevue College</a></p>
     </div>
 </div>
+
+<!-- End of  page ------------------------------------------------------------------>
+
+<!-- Start of  page ------------------------------------------------------------------>
+ <div data-role="page" id="EditItems">
+  <!--   page header -->
+  <div data-role="header" data-theme='a'>
+      <div class = "header">
+        <a id="header_title" href="#home">Share Your Favorite Items</a>
+        <!-- <h1>Share Your Favorite Items</h1> -->
+      </div>
+      <div id = "nav" data-role="navbar" data-theme='a'>
+        <ul>
+            <!-- /navbar -->
+          <li><a href="#home" data-transition="slide">Home Page</a></li>
+          <li><a href="#AllItems" data-transition="slide">All Items</a></li>
+          <li><a href="#AddItems" data-transition="slide">Add Items</a></li>
+        </ul>
+      </div>
+  </div>
+
+  <!-- page content -->
+
+  <div data-role="content" data-theme='a'>
+    <h2>Edit Item information</h2>
+
+    Items Name<br />
+    <input type="text" value="" id="titleE"/>
+
+    Image Picture<br />
+    <input type="text" id="pictureE" placeholder="Enter image URL"/> 
+
+    <div class="select-type">
+      <label for="select-type">Select Type</label>
+      <select name="select-type" id="select-type">
+        <div class ="option">
+          <option class ="option" value="">--Select--</option>
+        </div>
+      </select>
+    </div>
+
+    Cost<br />
+    <input type="text" value="" id="costE"/>
+
+    Description<br />
+    <input type="text" value="" id="descriptionE"/>
+
+    URL<br />
+    <input type="text" value="" id="URLE"/>
+
+    <input type="button" value="Done" id="buttonModify" data-inline="true" />
+</div>  
+
+  <!--  page footer -->
+  <div data-role="footer" data-theme='b' class = 'footer'>
+      <p>This website was created for educational purposes only by a group of people from
+          <a href="https://www.bellevuecollege.edu">Bellevue College</a></p>
+  </div>
+</div>
+<!-- End of  page ------------------------------------------------------------------>
 
 </body>
 

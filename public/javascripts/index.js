@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // modify item detail
     document.getElementById("buttonModify").addEventListener("click", function () {
+        var urlParams = new URLSearchParams(window.location.hash.substring(1));
+        var id = urlParams.get("id");
         let newItem = new ItemObject(
             document.getElementById("titleE").value, 
             document.getElementById("pictureE").value, 
@@ -86,8 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("costE").value, 
             document.getElementById("descriptionE").value, 
             document.getElementById("URLE").value);
-        modifyItem(newItem);
+        modifyItem(id, newItem); // Pass the id and newItem to the modifyItem function
     });
+    
 
 
 
@@ -107,12 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
 });
-
-
-
-    //document.getElementById("buttonEdit").addEventListener("click", function () {
-        // do edit
-    // });
 
 
     // page before show code *************************************************************************
@@ -267,8 +264,8 @@ function dynamicSort(property) {
     }
 }
 
-function modifyItem(newItem){
-    newItem.ID = localStorage.getItem('parm');
+function modifyItem(id,newItem){
+    newItem.ID = id;
 
     $.ajax({
         type: "PUT",
