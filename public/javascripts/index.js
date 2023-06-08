@@ -77,6 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
         itemList(sortOrder)
     });
 
+    // modify item detail
+    document.getElementById("buttonModify").addEventListener("click", function () {
+        let newItem = new ItemObject(
+            document.getElementById("titleE").value, 
+            document.getElementById("pictureE").value, 
+            selectedType,
+            document.getElementById("costE").value, 
+            document.getElementById("descriptionE").value, 
+            document.getElementById("URLE").value);
+        modifyItem(newItem);
+    });
+
 
 
 
@@ -238,10 +250,6 @@ $(document).bind("change", "#select-type", function (event, ui) {
     selectedType = $('#select-type').val();
 });
 
-
-
-
-
 function dynamicSort(property) {
     var sortOrder = 1;
 
@@ -257,4 +265,23 @@ function dynamicSort(property) {
             return a[property].localeCompare(b[property]);
         }
     }
+}
+
+function modifyItem(newItem){
+    newItem.ID = localStorage.getItem('parm');
+
+    $.ajax({
+        type: "PUT",
+        url: "/ModifyItem/:" +newItem.ID,
+        data: JSON.stringify(newItem),
+        contentType: "application/json; charset=utf-8",
+        success: function(result){
+            alert(result);
+            document.location.href = "index.html#AllItems";
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Status:  " +textStatus);alert("Error: "+errorThrown)
+            document.location.href = "index.html#AllItems";
+        }
+    });   
 }

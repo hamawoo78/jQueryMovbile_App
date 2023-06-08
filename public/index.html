@@ -15,9 +15,11 @@
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-
   <script src="javascripts/index.js"></script>
   <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap" rel="stylesheet">
 
 </head>
 
@@ -29,19 +31,21 @@
     <!--   page header -->
     <div data-role="header" data-theme='a'>
         <div class = "header">
-            <h1>Share Your Favorite Items</h1>
-            <div class = "header_items">
-              <img class = "header_img" src="images/header.jpg" alt="header">
-              <!-- <p>Discover Unique, Handcrafted Items from Local Artist </p> -->
-            </div>
+          <a id="header_title" href="#home">Share Your Favorite Items</a>
+          <!-- <h1>Share Your Favorite Items</h1> -->
         </div>
-      <div data-role="navbar" data-theme='a'>
+      <div id = "nav" data-role="navbar" data-theme='a'>
         <ul>
             <!-- /navbar -->
             <!-- <li><a href="#home">Home Page</a></li> -->
             <li><a href="#AllItems" data-transition="slide">Review All Items</a></li>
             <li><a href="#AddItems" data-transition="slide">Sell Your Items</a></li>
         </ul>
+      </div>
+
+      <div class = "header_items">
+        <img class = "header_img" src="images/header.jpg" alt="header">
+        <!-- <p>Discover Unique, Handcrafted Items from Local Artist </p> -->
       </div>
     </div>
 
@@ -81,9 +85,10 @@
   <!--   page header -->
   <div data-role="header" data-theme='a'>
       <div class = "header">
-        <h1>Share Your Favorite Items</h1>
+        <a id="header_title" href="#home">Share Your Favorite Items</a>
+        <!-- <h1>Share Your Favorite Items</h1> -->
       </div>
-      <div data-role="navbar" data-theme='a'>
+      <div id = "nav" data-role="navbar" data-theme='a'>
         <ul>
             <!-- /navbar -->
             <li><a href="#home" data-transition="slide">Home Page</a></li>
@@ -121,9 +126,10 @@
     <!--   page header -->
     <div data-role="header" data-theme='a'>
         <div class = "header">
-          <h1>Share Your Favorite Items</h1>
+          <a id="header_title" href="#home">Share Your Favorite Items</a>
+          <!-- <h1>Share Your Favorite Items</h1> -->
         </div>
-        <div data-role="navbar" data-theme='a'>
+        <div id = "nav" data-role="navbar" data-theme='a'>
           <ul>
               <!-- /navbar -->
             <li><a href="#home" data-transition="slide">Home Page</a></li>
@@ -145,11 +151,6 @@
 
     Image Picture<br />
     <input type="text" id="picture" placeholder="Enter image URL"/> 
-    <!--Image Picture<br />
-    <input type="file" value="" id="picture" accept="image/png, image/jpg" >-->
-    <div id="display_image"> </div>
-
-
 
     <div class="select-type">
       <label for="select-type">Select Type</label>
@@ -171,7 +172,7 @@
     <input type="text" value="" id="URL"/>
     
       <input type="button" value="Add Item" id="buttonAdd" data-inline="true" />
-      <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+      <input type="button" value="Clear" id="buttonClear" data-inline="true" />
     </div>
 
 
@@ -197,9 +198,10 @@
       <!--   page header -->
       <div data-role="header" data-theme='a'>
         <div class = "header">
-          <h1>Share Your Favorite Items</h1>
+          <a id="header_title" href="#home">Share Your Favorite Items</a>
+          <!-- <h1>Share Your Favorite Items</h1> -->
         </div>
-        <div data-role="navbar" data-theme='a'>
+        <div id = "nav" data-role="navbar" data-theme='a'>
           <ul>
               <!-- /navbar -->
             <li><a href="#home" data-transition="slide">Home Page</a></li>
@@ -226,10 +228,36 @@
         </button>
         <input type="button" value="Edit Item" id="buttonEdit" data-inline="true" />
         <input type="button" value="Delete Item" id="buttonDelete" data-inline="true" />
+    </div>
 
+    <div>
+      <h2>Edit Item information</h2>
 
+      Items Name<br />
+      <input type="text" value="" id="titleE"/>
+  
+      Image Picture<br />
+      <input type="text" id="pictureE" placeholder="Enter image URL"/> 
+  
+      <div class="select-type">
+        <label for="select-type">Select Type</label>
+        <select name="select-type" id="select-type">
+          <div class ="option">
+            <option class ="option" value="">--Select--</option>
+          </div>
+        </select>
+      </div>
+  
+      Cost<br />
+      <input type="text" value="" id="costE"/>
+  
+      Description<br />
+      <input type="text" value="" id="descriptionE"/>
 
-        <!-- <input type="button" value="Edit Note" id="buttonEdit" data-inline="true" /> -->
+      URL<br />
+      <input type="text" value="" id="URLE"/>
+
+      <input type="button" value="Done" id="buttonModify" data-inline="true" />
     </div>
 
     <!--  page footer -->

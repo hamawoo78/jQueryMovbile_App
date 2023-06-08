@@ -104,7 +104,7 @@ router.post('/AddItems', function(req, res) {
 router.delete('/DeleteItem/:ID', (req, res) =>{
 
   const delID = req.params.ID.slice(1);
-  console.log(delID);
+  // console.log(delID);
   let found = false;
   let pointer = GetArrayPointer(delID);
   if (pointer == -1)
@@ -120,10 +120,30 @@ router.delete('/DeleteItem/:ID', (req, res) =>{
     fileManager.write();
     res.send('Item with ID: ' + delID+ 'delted!')
   }
-  // newItem = req.body;
-  // severItemArray.push(newItem);
-  // res.status(200).json(newItem);
-  // Do we need this three line?
+
+});
+
+router.delete('/ModifyItem/:ID', (req, res) =>{
+
+  const EditID = req.params.ID.slice(1);
+  console.log(EditID);
+  let found = false;
+  let pointer = GetArrayPointer(EditID);
+  if (pointer == -1)
+  {
+    console.log("not found");
+    return res.status(500).json({
+      status: "error: no such ID"
+    });
+  }
+  else
+  {
+    severItemArray.splice(pointer, 1)
+    const newVersion = req.body;
+    severItemArray.push(newVersion)
+    // fileManager.write();
+    res.send('Item with ID: ' + EditID+ 'updated!')
+  }
 });
 
 function GetArrayPointer(localID){

@@ -3,38 +3,67 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 .header_items {
-  position: relative;
-  }
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
 
-.header_items p {
-  position: absolute;
-  color: white;
-  top: 70%;
-  left: 50%;
-  }
-  #first_menu {
+.header_img
+{
+  position: center;
+  width: 80%;
+  height: 300px;
+}
+
+
+#first_menu {
     display: flex; 
-  }
+    margin: auto;
+    width: 50%;
+}
+
+#first_menu button {
+    margin: 0 10px 20px 0px; /* Optional: Adjust the margin between buttons */
+}
   
 
-h1{
+#header_title{
+  padding:20px;
+  display: block;
+  text-decoration: none;
   text-align: center;
+  font-family: 'Rubik Puddles', cursive;
+  font-size: 60px;
+}
+
+#header_title:hover{
+  color: #ffffff;
 }
 
 img{
   width: 50%;
 }
 
-.header_img
-{
-  width: 100%;
-  height: 20%;
+#nav{
+  background-color: rgb(105, 126, 144);
 }
+
 ul a{
   color: #ffffff;
   text-decoration: none;
 }
 
-  #buy{
+#divItemList ul{
+  cursor: pointer;
+}
+
+#buy{
   background-color: #ffffff;
+}
+
+#title, #picture,#select-type, #cost, #description, #URL{
+  background-color: rgb(236, 219, 201);
+}
+
+#myul{
+  list-style-type: none;
 }
