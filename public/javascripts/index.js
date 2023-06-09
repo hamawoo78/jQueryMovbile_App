@@ -79,8 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // modify item detail
     document.getElementById("buttonModify").addEventListener("click", function () {
-        var urlParams = new URLSearchParams(window.location.hash.substring(1));
-        var id = urlParams.get("id");
+        let id = document.querySelector("[data-id]").getAttribute("data-id");
+        console.log(id);
+        
         let newItem = new ItemObject(
             document.getElementById("titleE").value, 
             document.getElementById("pictureE").value, 
@@ -88,6 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("costE").value, 
             document.getElementById("descriptionE").value, 
             document.getElementById("URLE").value);
+        console.log(id)
+        console.log(titleE.value)
+
         modifyItem(id, newItem); // Pass the id and newItem to the modifyItem function
     });
     
@@ -132,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             item = itemArray[i];
         }
     }
-
+    document.getElementById("oneID").textContent = item.ID;   
     document.getElementById("onePicture").innerHTML = `<img src="${item.Picture}" alt="${item.Titile}"/>`;
     document.getElementById("oneTitle").textContent = "TITLE: " + item.Title;
     document.getElementById("oneType").textContent = "TYPE: " + item.Type;
@@ -266,6 +270,7 @@ function dynamicSort(property) {
 
 function modifyItem(id,newItem){
     newItem.ID = id;
+    console.log(newItem.ID, newItem.title)
 
     $.ajax({
         type: "PUT",

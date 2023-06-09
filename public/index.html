@@ -141,6 +141,39 @@
         </div>
     </div>
 
+  <!-- page content -->
+
+  <div data-role="content" data-theme='a'>
+    <h2>New Item</h2>
+
+    Items Name<br />
+    <input type="text" value="" id="title"/>
+
+    Image Picture<br />
+    <input type="text" id="picture" placeholder="Enter image URL"/> 
+
+    <div class="select-type">
+      <label for="select-type">Select Type</label>
+      <select name="select-type" id="select-type">
+        <div class ="option">
+          <option class ="option" value="">--Select--</option>
+        </div>
+      </select>
+    </div>
+
+    Cost<br />
+    <input type="text" value="" id="cost"/>
+
+    Description<br />
+    <input type="text" value="" id="description"/>
+
+    URL<br />
+    <input type="text" value="" id="URL"/>
+
+    <input type="button" value="Add Item" id="buttonAdd" data-inline="true" />
+    <input type="button" value="Clear" id="buttonClear" data-inline="true" />
+  </div>  
+
 
  
     <!--  page footer -->
@@ -179,6 +212,8 @@
     <!--  content -->
     <div data-role="content" data-theme='a'>
         <!-- <p> Here are the details</p> -->
+        <p id="oneID" hidden></p>
+        <!-- <p id="oneID"></p> -->
         <p id="onePicture"></p>
         <p id="oneTitle"></p>
         <p id="onePicture"></p>
@@ -192,8 +227,8 @@
           <a href="#AllItems">Go Back</a>
         </button>
         <button>
-          <a href="#EditItems?id=<ID_VALUE>">Edit Item</a>
-        </button>
+          <a href="#EditItems" data-id=oneID>Edit Item</a>
+        </button>        
         <input type="button" value="Delete Item" id="buttonDelete" data-inline="true" />
     </div>
 
