@@ -89,10 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("costE").value, 
             document.getElementById("descriptionE").value, 
             document.getElementById("URLE").value);
-        console.log(id)
-        console.log(titleE.value)
 
-        modifyItem(id, newItem); // Pass the id and newItem to the modifyItem function
+        modifyItem(newItem); // Pass the id and newItem to the modifyItem function
     });
     
 
@@ -268,8 +266,8 @@ function dynamicSort(property) {
     }
 }
 
-function modifyItem(id,newItem){
-    newItem.ID = id;
+function modifyItem(newItem){
+    newItem.ID = localStorage.getItem('parm');
     console.log(newItem.ID, newItem.title)
 
     $.ajax({
