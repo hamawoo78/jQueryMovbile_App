@@ -227,16 +227,18 @@
           <a href="#AllItems">Go Back</a>
         </button>       
         <input type="button" value="Delete Item" id="buttonDelete" data-inline="true" />
+        <input type="button" value="Edit Item" id="openEditPage" data-inline="true" />
+
     </div>
 
-    <div>
+    <div id="EditPage" style="display:none;">
       <h2>Edit Item information</h2>
   
       Items Name<br />
-      <input type="text" value="" id="titleE"/>
+      <input type="text" id="titleE"/>
   
       Image Picture<br />
-      <input type="text" id="pictureE" placeholder="Enter image URL"/> 
+      <input type="text" value="onePicture" id="pictureE" placeholder="Enter image URL"/> 
   
       <div class="select-type">
         <label for="select-type">Select Type</label>
@@ -257,7 +259,7 @@
       <input type="text" value="" id="URLE"/>
   
       <input type="button" value="Done" id="buttonModify" data-inline="true" />
-  </div>  
+    </div>  
 
     <!--  page footer -->
     <div data-role="footer" data-theme='b' class = 'footer'>

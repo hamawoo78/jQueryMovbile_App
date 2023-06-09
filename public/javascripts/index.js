@@ -79,17 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // modify item detail
     document.getElementById("buttonModify").addEventListener("click", function () {
-        let id = document.querySelector("[data-id]").getAttribute("data-id");
-        console.log(id);
+        // let id = document.querySelector("[data-id]").getAttribute("data-id");
+        // console.log(id);
+        // let modifyID = localStorage.getItem('parm');
         
         let newItem = new ItemObject(
+            // modifyID,
             document.getElementById("titleE").value, 
-            document.getElementById("pictureE").value, 
-            selectedType,
+            document.getElementById("pictureE").value,
             document.getElementById("costE").value, 
             document.getElementById("descriptionE").value, 
             document.getElementById("URLE").value);
 
+        console.log(newItem);
         modifyItem(newItem); // Pass the id and newItem to the modifyItem function
     });
     
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // button on details page to view the youtube video
+    // button on details page to view 
     document.getElementById("buy").addEventListener("click", function () {
         window.open(document.getElementById("oneURL").innerHTML);
     });
@@ -110,6 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
         //document.location.href= "index.html#AllItems"
     });
     
+    // open Edit page
+    document.getElementById("openEditPage").addEventListener("click", function () {
+        let element = document.getElementById("EditPage");
+        element.style.display = "block";
+
+    });
 
 });
 
@@ -141,7 +149,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("oneCost").textContent = "COST: $" + item.Cost;
     document.getElementById("oneDescription").textContent = "DESCRIPTION: " + item.Description;
     document.getElementById("oneURL").textContent = item.URL;
+
+
+    document.getElementById("titleE").value = item.Title;
+    document.getElementById("pictureE").value = item.Picture;
+    // document.getElementById("select-type").value = "Kitchen"; 
+    document.getElementById("costE").value = item.Cost;
+    document.getElementById("descriptionE").value = item.Description;
+    document.getElementById("URLE").value = item.URL;
     });
+
+
+
+
+
  
 // end of page before show code *************************************************************************
 
@@ -268,7 +289,6 @@ function dynamicSort(property) {
 
 function modifyItem(newItem){
     newItem.ID = localStorage.getItem('parm');
-    console.log(newItem.ID, newItem.title)
 
     $.ajax({
         type: "PUT",

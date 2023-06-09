@@ -123,10 +123,10 @@ router.delete('/DeleteItem/:ID', (req, res) =>{
 
 });
 
-router.delete('/ModifyItem/:ID', (req, res) =>{
+router.put('/ModifyItem/:ID', (req, res) =>{
 
   const EditID = req.params.ID.slice(1);
-  console.log(EditID);
+  console.log("in server "+EditID);
   let found = false;
   let pointer = GetArrayPointer(EditID);
   if (pointer == -1)
@@ -138,17 +138,19 @@ router.delete('/ModifyItem/:ID', (req, res) =>{
   }
   else
   {
-    severItemArray.splice(pointer, 1)
+    severItemArray.splice(pointer, 1);
+    // const delID = req.params.ID.slice(1);
+
     const newVersion = req.body;
     severItemArray.push(newVersion)
-    // fileManager.write();
+    fileManager.write();
     res.send('Item with ID: ' + EditID+ 'updated!')
   }
 });
 
 function GetArrayPointer(localID){
   for (let i = 0; i < severItemArray.length; i++){
-    //console.log(localID +' and' + severItemArray[i].ID);
+    console.log(localID +' and' + severItemArray[i].ID);
     if (localID === severItemArray[i].ID)
     {
       return i;
