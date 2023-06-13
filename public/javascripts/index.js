@@ -14,15 +14,22 @@ let ItemObject = function (pTitle,pPicture, pType, pCost, pDescription, pURL) {
 // itemArray.push(new ItemObject("Handmade plate", "https://i.etsystatic.com/8444652/r/il/e49b53/3246849328/il_1588xN.3246849328_po5a.jpg", "Kitchen", "41.50", "cute plate", "https://www.bellevuecollege.edu/"));
 
 document.addEventListener("DOMContentLoaded", function () {
-
         
     // Select type button
-    let Types = ["Home", "Hobby", "Kitchen", "Other"]; // we could add the other types if we need
+    let Types = ["Home", "Hobby", "Kitchen", "Other"];
     for (let i = 0; i < Types.length; i++) {
         let option = document.createElement("option");
         option.value = Types[i];
         option.text = Types[i];
         document.getElementById("select-type").appendChild(option);
+    }
+
+    // Select type button
+    for (let i = 0; i < Types.length; i++) {
+        let optionEdit = document.createElement("option");
+        optionEdit.value = Types[i];
+        optionEdit.text = Types[i];
+        document.getElementById("select-type-edit").appendChild(optionEdit);
     }
 
     // add button 
@@ -49,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
+        alert("Item is added!")
         clear();
     });
 
@@ -87,10 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // modifyID,
             document.getElementById("titleE").value, 
             document.getElementById("pictureE").value,
+            selectedTypeEdit,
             document.getElementById("costE").value, 
             document.getElementById("descriptionE").value, 
             document.getElementById("URLE").value);
 
+        document.getElementById("EditPage").style.display = "none";
         console.log(newItem);
         modifyItem(newItem); // Pass the id and newItem to the modifyItem function
     });
@@ -116,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("openEditPage").addEventListener("click", function () {
         let element = document.getElementById("EditPage");
         element.style.display = "block";
-
     });
 
 });
@@ -153,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("titleE").value = item.Title;
     document.getElementById("pictureE").value = item.Picture;
-    // document.getElementById("select-type").value = "Kitchen"; 
+    document.getElementById("select-type").value = item.Type; 
     document.getElementById("costE").value = item.Cost;
     document.getElementById("descriptionE").value = item.Description;
     document.getElementById("URLE").value = item.URL;
@@ -250,24 +259,9 @@ $(document).bind("change", "#select-type", function (event, ui) {
         selectedType = $('#select-type').val();
     });
 
-    // updateItemList(); // Update the note list on page load
-
-$(document).ready(function() {
-    // Handle file selection
-    $('#picture').on('change', function(event) {
-        var file = event.target.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function(event) {
-            var imageData = event.target.result;
-        };
-
-    reader.readAsDataURL(file);
-    });
-});
   
-$(document).bind("change", "#select-type", function (event, ui) {
-    selectedType = $('#select-type').val();
+$(document).bind("change", "#select-type-edit", function (event, ui) {
+    selectedTypeEdit = $('#select-type-edit').val();
 });
 
 function dynamicSort(property) {
